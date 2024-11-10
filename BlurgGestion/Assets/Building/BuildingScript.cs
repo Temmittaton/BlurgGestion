@@ -5,6 +5,7 @@ using UnityEngine;
 public class BuildingScript : MonoBehaviour {
     public Building building;
     public int level;
+    public Vector2 pos;
 
     public void Init () {
         string _path = "Buildings/" + building.name + "/" + level.ToString () + "/sprite";

@@ -17,6 +17,7 @@ public class BuildingManager : MonoBehaviour {
             GameObject _o = Instantiate (template);
             _o.GetComponent<BuildingScript> ().building = _building;
             _o.transform.position = _pos.x * new Vector2 (-1, -1) + _pos.y * new Vector2 (1, -1);
+            _o.GetComponent<BuildingScript> ().pos = _pos.x * new Vector2 (-1, -1) + _pos.y * new Vector2 (1, -1);
             _o.GetComponent<BuildingScript> ().Init ();
         }
     }
@@ -24,7 +25,21 @@ public class BuildingManager : MonoBehaviour {
         // TODO
     }
     public int SelectBuilding (Vector2 worldPos) {
-        return -1; // TODO
+        Vector2 touchPos = worldPos.x * new Vector2 (-1, -1) + worldPos.y * new Vector2 (1, -1);
+
+        for (int i = 0; i < buildings.Length; i++) {
+            if (buildings[i] == null) {continue;}
+
+            Vector2 _pos = builtBuildings[i].GetComponent<BuildingScript> ().pos;
+            Vector2 _size = builtBuildings[i].GetComponent<BuildingScript> ().building.size;
+            bool hits = (touchPos.x >= _pos.x) && (touchPos.y >= _pos.y);
+            hits = hits && (touchPos.x <= _pos.x + _size.x) && (touchPos.y <= _pos.y + _size.y);
+            if (hits) {
+                return i;
+            }
+        }
+
+        return -1;
     }
     public void Init () {
         builtBuildings = new GameObject[TERRAIN_WIDTH * TERRAIN_WIDTH];
@@ -50,7 +65,7 @@ public enum Ressource {
 [System.Serializable]
 public class Building {
     public string name;
-    public int2 size;
+    public Vector2 size;
     public BuildingType type;
     public Ressource ressource;
     public int stat; // Capacity if stock, gen/sec if production, stat if statraiser, dmg if defense
