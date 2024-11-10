@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5907741539707371924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9033095304620177998}
+  - component: {fileID: -6495917781662605151}
+  - component: {fileID: 470522403091251102}
+  - component: {fileID: 7410354997353579905}
+  - component: {fileID: -4787757483277804325}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9033095304620177998
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907741539707371924}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6495917781662605151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907741539707371924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42cb87576b2fff347975377bceeed984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bM: {fileID: 470522403091251102}
+  rM: {fileID: 7410354997353579905}
+  iM: {fileID: -4787757483277804325}
+--- !u!114 &470522403091251102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907741539707371924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39d08e31e26af884a819294bd35f288c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  template: {fileID: 8903530955321005838, guid: 52981dd7f85239246a86c584dbb1cfc5, type: 3}
+  builtBuildings: []
+  buildings:
+  - name: House
+    size:
+      x: 2
+      y: 2
+    type: 0
+    ressource: 0
+    stat: 1
+  - name: Quarry
+    size:
+      x: 4
+      y: 4
+    type: 2
+    ressource: 4
+    stat: 1
+  - name: StoneStock
+    size:
+      x: 2
+      y: 2
+    type: 1
+    ressource: 4
+    stat: 32
+  - name: Farm
+    size:
+      x: 4
+      y: 4
+    type: 2
+    ressource: 1
+    stat: 1
+  - name: FoodStock
+    size:
+      x: 2
+      y: 2
+    type: 1
+    ressource: 1
+    stat: 32
+  - name: Plant
+    size:
+      x: 4
+      y: 4
+    type: 2
+    ressource: 2
+    stat: 4
+  - name: BlurgStock
+    size:
+      x: 2
+      y: 2
+    type: 1
+    ressource: 3
+    stat: 32
+  - name: Fortification
+    size:
+      x: 1
+      y: 1
+    type: 3
+    ressource: 0
+    stat: 1
+--- !u!114 &7410354997353579905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907741539707371924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80b5ae73980d9304da68d2ba0ec5aac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stoneAmount: 0
+  foodAmount: 0
+  peopleAmount: 0
+  blurgAmount: 0
+  stoneMaxAmount: 0
+  foodMaxAmount: 0
+  blurgMaxAmount: 0
+  stoneGen: 0
+  foodGen: 0
+  electricityGen: 0
+  blurgGen: 0
+--- !u!114 &-4787757483277804325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907741539707371924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4b375f0b2951d4fafb0cc748a4c1ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
