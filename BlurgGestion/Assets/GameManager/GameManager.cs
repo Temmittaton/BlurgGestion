@@ -25,7 +25,8 @@ public class GameManager : MonoBehaviour {
     }
     void Update () {
         iM.Frame ();
-        bM.Frame ();
-        rM.Frame ();
+        Building[] _builtBuildings = bM.Frame ();
+        rM.Frame (_builtBuildings);
+        uiM.Frame ();
     }
 }

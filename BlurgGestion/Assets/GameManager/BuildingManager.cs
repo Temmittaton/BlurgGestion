@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BuildingManager : MonoBehaviour {
     private int GRID_SIZE = 1;
-    private int TERRAIN_WIDTH = 64;
+    private int TERRAIN_WIDTH = 16;
     [SerializeField] private GameObject template;
     public GameObject[] builtBuildings;
     public Building[] buildings;
@@ -22,6 +22,7 @@ public class BuildingManager : MonoBehaviour {
             _o.transform.position = _pos.x * new Vector2 (-1, -1) + _pos.y * new Vector2 (1, -1);
             _o.GetComponent<BuildingScript> ().pos = _pos.x * new Vector2 (-1, -1) + _pos.y * new Vector2 (1, -1);
             _o.GetComponent<BuildingScript> ().Init ();
+            builtBuildings[i] = _o;
 
             break;
         }
@@ -49,8 +50,15 @@ public class BuildingManager : MonoBehaviour {
     public void Init () {
         builtBuildings = new GameObject[TERRAIN_WIDTH * TERRAIN_WIDTH];
     }
-    public void Frame () {
+    public Building[] Frame () {
+        Building[] _builtBuildings = new Building[builtBuildings.Length];
 
+        for (int i = 0; i < builtBuildings.Length; i++) {
+            if (builtBuildings[i] == null) { continue; }
+            _builtBuildings [i] = builtBuildings [i].GetComponent<BuildingScript> ().building;
+        }
+
+        return _builtBuildings;
     }
 }
 
