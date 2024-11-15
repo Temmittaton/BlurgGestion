@@ -7,7 +7,7 @@ public class InputManager : MonoBehaviour {
     private Touch prevTouch;
     public State state;
     private Vector2 anchor, cameraTargetPos;
-    public int selectedBuilding;
+    public int selectedBuilding = -1;
     public float cameraSpeed, camT;
 
     private Vector2 TouchPosToWorldPos (Vector2 touchPos) {

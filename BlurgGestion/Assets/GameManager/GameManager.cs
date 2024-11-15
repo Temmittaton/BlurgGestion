@@ -12,6 +12,15 @@ public class GameManager : MonoBehaviour {
         if (I == null) { I = this;}
     }
 
+    public void Start () {
+        // Init
+        bM.Init ();
+
+        // Remove this when save is implemented
+        bM.AddBuilding (bM.buildings[0], new Unity.Mathematics.int2 (0, 0));
+
+        bM.SetupScene ();
+    }
     void Update () {
         iM.Frame ();
         bM.Frame ();

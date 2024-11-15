@@ -10,6 +10,9 @@ public class BuildingManager : MonoBehaviour {
     public GameObject[] builtBuildings;
     public Building[] buildings;
 
+    public void SetupScene () {
+        // TODO : load save and summon + place all buildings
+    }
     public void AddBuilding (Building _building, int2 _pos) {
         for (int i = 0; i < buildings.Length; i++) {
             if (builtBuildings[i] != null) {continue;}
@@ -19,6 +22,8 @@ public class BuildingManager : MonoBehaviour {
             _o.transform.position = _pos.x * new Vector2 (-1, -1) + _pos.y * new Vector2 (1, -1);
             _o.GetComponent<BuildingScript> ().pos = _pos.x * new Vector2 (-1, -1) + _pos.y * new Vector2 (1, -1);
             _o.GetComponent<BuildingScript> ().Init ();
+
+            break;
         }
     }
     public void MoveBuilding (Vector2 move) {
@@ -27,8 +32,8 @@ public class BuildingManager : MonoBehaviour {
     public int SelectBuilding (Vector2 worldPos) {
         Vector2 touchPos = worldPos.x * new Vector2 (-1, -1) + worldPos.y * new Vector2 (1, -1);
 
-        for (int i = 0; i < buildings.Length; i++) {
-            if (buildings[i] == null) {continue;}
+        for (int i = 0; i < builtBuildings.Length; i++) {
+            if (builtBuildings[i] == null) {continue;}
 
             Vector2 _pos = builtBuildings[i].GetComponent<BuildingScript> ().pos;
             Vector2 _size = builtBuildings[i].GetComponent<BuildingScript> ().building.size;

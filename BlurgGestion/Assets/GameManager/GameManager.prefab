@@ -66,58 +66,42 @@ MonoBehaviour:
   builtBuildings: []
   buildings:
   - name: House
-    size:
-      x: 2
-      y: 2
+    size: {x: 2, y: 2}
     type: 0
     ressource: 0
     stat: 1
   - name: Quarry
-    size:
-      x: 4
-      y: 4
+    size: {x: 4, y: 4}
     type: 2
     ressource: 4
     stat: 1
   - name: StoneStock
-    size:
-      x: 2
-      y: 2
+    size: {x: 2, y: 2}
     type: 1
     ressource: 4
     stat: 32
   - name: Farm
-    size:
-      x: 4
-      y: 4
+    size: {x: 4, y: 4}
     type: 2
     ressource: 1
     stat: 1
   - name: FoodStock
-    size:
-      x: 2
-      y: 2
+    size: {x: 2, y: 2}
     type: 1
     ressource: 1
     stat: 32
   - name: Plant
-    size:
-      x: 4
-      y: 4
+    size: {x: 4, y: 4}
     type: 2
     ressource: 2
     stat: 4
   - name: BlurgStock
-    size:
-      x: 2
-      y: 2
+    size: {x: 2, y: 2}
     type: 1
     ressource: 3
     stat: 32
   - name: Fortification
-    size:
-      x: 1
-      y: 1
+    size: {x: 1, y: 1}
     type: 3
     ressource: 0
     stat: 1
@@ -156,3 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4b375f0b2951d4fafb0cc748a4c1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
+  selectedBuilding: -1
+  cameraSpeed: 1
+  camT: 0
