@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
     public BuildingManager bM;
     public RessourceManager rM;
     public InputManager iM;
+    public UIManager uiM;
 
     private void Awake () {
         if (I == null) { I = this;}
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour {
     public void Start () {
         // Init
         bM.Init ();
+        uiM.Init ();
 
         // Remove this when save is implemented
         bM.AddBuilding (bM.buildings[0], new Unity.Mathematics.int2 (0, 0));

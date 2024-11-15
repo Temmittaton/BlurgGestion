@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 470522403091251102}
   - component: {fileID: 7410354997353579905}
   - component: {fileID: -4787757483277804325}
+  - component: {fileID: 8810257916154215572}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -50,6 +51,7 @@ MonoBehaviour:
   bM: {fileID: 470522403091251102}
   rM: {fileID: 7410354997353579905}
   iM: {fileID: -4787757483277804325}
+  uiM: {fileID: 8810257916154215572}
 --- !u!114 &470522403091251102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,3 +146,16 @@ MonoBehaviour:
   selectedBuilding: -1
   cameraSpeed: 1
   camT: 0
+--- !u!114 &8810257916154215572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907741539707371924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1b4228cc0747341a2c0f983463714e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
