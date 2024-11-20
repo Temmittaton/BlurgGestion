@@ -30,6 +30,9 @@ public class BuildingManager : MonoBehaviour {
     public void MoveBuilding (Vector2 move) {
         // TODO
     }
+    public void OnCanvasGroupChanged () {
+        // TODO
+    }
     public int SelectBuilding (Vector2 worldPos) {
         Vector2 touchPos = worldPos.x * new Vector2 (-1, -1) + worldPos.y * new Vector2 (1, -1);
 

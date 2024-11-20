@@ -159,3 +159,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  openPanel: 0
+  buildItems:
+  - ID: 0
+    costs: 00000000
+    ressources: 
+  - ID: 1
+    costs: 
+    ressources: 
+  - ID: 2
+    costs: 
+    ressources: 
+  - ID: 4
+    costs: 
+    ressources: 
+  buildItemObjects: []
+  buildItemPrefab: {fileID: 837393145828833310, guid: 9939b224191238d41a7a3750f3ee077f, type: 3}
+  menuAnchor: {fileID: 0}
