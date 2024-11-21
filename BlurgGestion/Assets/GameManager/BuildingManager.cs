@@ -7,9 +7,27 @@ public class BuildingManager : MonoBehaviour {
     private int GRID_SIZE = 1;
     private int TERRAIN_WIDTH = 16;
     [SerializeField] private GameObject template;
+    [SerializeField] private GameObject selectIndicator;
+    private int selectedBuilding = -1;
+    private Vector2 currentMove = Vector2.zero;
     public GameObject[] builtBuildings;
     public Building[] buildings;
+    public GameObject ghostBuilding;
 
+    private bool CheckPosition (Vector3 pos, Vector2 size) {
+        for (int i = 0; i < builtBuildings.Length; i++) {
+            if (builtBuildings[i] == null) { continue; }
+
+            Vector3 _pos = builtBuildings[i].transform.position;
+            Vector2 _size = builtBuildings[i].GetComponent<BuildingScript> ().building.size;
+            bool collision = (pos.x + size.x > _pos.x) && (_pos.x + _size.x > pos.x) && (pos.y + size.y > _pos.y) && (_pos.y + _size.y > pos.y);
+            if (collision) {
+                return false;
+            }
+        }
+
+        return true;
+    }
     public void SetupScene () {
         // TODO : load save and summon + place all buildings
     }
@@ -28,10 +46,28 @@ public class BuildingManager : MonoBehaviour {
         }
     }
     public void MoveBuilding (Vector2 move) {
-        // TODO
+        if (currentMove == Vector2.zero) {
+            // If just started moving
+            ghostBuilding = Instantiate (template);
+            ghostBuilding.GetComponent<SpriteRenderer> ().color = new Color (1f, 1f, 1f, .5f);
+            ghostBuilding.transform.position = builtBuildings [selectedBuilding].transform.position;
+        }
+
+        currentMove += move;
+        ghostBuilding.transform.position = builtBuildings[selectedBuilding].transform.position + new Vector3 ((int)currentMove.x, (int)currentMove.y, 0) * GRID_SIZE;
+
+        // Check current position
+        bool isPosValid = CheckPosition (ghostBuilding.transform.position, builtBuildings[selectedBuilding].GetComponent<BuildingScript> ().building.size);
+        if (isPosValid) {
+            selectIndicator.GetComponent<SpriteRenderer> ().color = Color.green;
+        }
+        else {
+            selectIndicator.GetComponent<SpriteRenderer> ().color = Color.red;
+        }
     }
-    public void OnCanvasGroupChanged () {
-        // TODO
+    public void CancelBuildingMovement () {
+        ghostBuilding.SetActive (false);
+        currentMove = Vector2.zero;
     }
     public int SelectBuilding (Vector2 worldPos) {
         Vector2 touchPos = worldPos.x * new Vector2 (-1, -1) + worldPos.y * new Vector2 (1, -1);
@@ -44,10 +80,18 @@ public class BuildingManager : MonoBehaviour {
             bool hits = (touchPos.x >= _pos.x) && (touchPos.y >= _pos.y);
             hits = hits && (touchPos.x <= _pos.x + _size.x) && (touchPos.y <= _pos.y + _size.y);
             if (hits) {
+                // summon selectedindicator
+                selectIndicator.SetActive (true);
+                selectIndicator.transform.position = builtBuildings [i].transform.position;
+                selectIndicator.transform.localScale = builtBuildings[i].GetComponent<BuildingScript> ().building.size;
+
+                selectedBuilding = i;
                 return i;
             }
         }
 
+        selectIndicator.SetActive (false);
+        selectedBuilding = -1;
         return -1;
     }
     public void Init () {
