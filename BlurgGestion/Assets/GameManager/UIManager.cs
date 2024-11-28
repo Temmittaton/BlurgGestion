@@ -51,7 +51,7 @@ public class UIManager : MonoBehaviour {
         buildItemObjects = new GameObject[buildItems.Length];
         for (int i = 0; i < buildItems.Length; i++) {
             buildItemObjects[i] = Instantiate (buildItemPrefab, canvas.transform.GetChild (2));
-            buildItemObjects[i].transform.position = menuAnchor.transform.position + Vector3.right * i * 128;
+            buildItemObjects[i].transform.position = menuAnchor.transform.position + Vector3.right * i * 256;
             buildItemObjects[i].GetComponent<BuildMenuItemScript> ().Init (buildItems[i]);
         }
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class BuildMenuItemScript : MonoBehaviour {
@@ -10,5 +11,11 @@ public class BuildMenuItemScript : MonoBehaviour {
         item = _item;
         string name = GameManager.I.bM.buildings[item.ID].name;
         transform.GetChild (2).GetComponent<Text> ().text = name;
+
+        // Get image
+    }
+
+    public void OnPressed () {
+        Debug.Log ("Clicked: " + gameObject.name);
     }
 }
