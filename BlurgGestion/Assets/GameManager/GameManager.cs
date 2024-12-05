@@ -18,10 +18,8 @@ public class GameManager : MonoBehaviour {
         bM.Init ();
         uiM.Init ();
 
-        // Remove this when save is implemented
-        bM.AddBuilding (bM.buildings[0], new Unity.Mathematics.int2 (0, 0));
-
         bM.SetupScene ();
+        Camera.main.transform.position = new Vector3 (-60f, -60f);
     }
     void Update () {
         iM.Frame ();

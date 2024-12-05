@@ -16,6 +16,8 @@ public class BuildMenuItemScript : MonoBehaviour {
     }
 
     public void OnPressed () {
-        Debug.Log ("Clicked: " + gameObject.name);
+        if (true) {// to replace with costs
+            GameManager.I.bM.AddBuilding (GameManager.I.bM.buildings[item.ID]);
+        }
     }
 }

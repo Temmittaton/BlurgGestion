@@ -10,6 +10,9 @@ public class InputManager : MonoBehaviour {
     public int selectedBuilding = -1;
     public float cameraSpeed, camT;
 
+    public void CenterCameraOn (Vector3 position) {
+        cameraTargetPos = position;
+    }
     private Vector2 TouchPosToWorldPos (Vector2 touchPos) {
         Vector3 _pos = Camera.main.ScreenToWorldPoint (touchPos);
         return new Vector2 (_pos.x, _pos.y);
@@ -40,6 +43,7 @@ public class InputManager : MonoBehaviour {
                         if (!isMoving) { break; }
 
                         cameraTargetPos += move * cameraSpeed * Time.deltaTime;
+                        anchor = touch.position / new Vector2 (Screen.width, Screen.height);
                         camT = 0;
                         break;
                     case (State.MovingBuilding):

@@ -19,6 +19,7 @@ public class BuildingManager : MonoBehaviour {
             if (builtBuildings[i] == null) { continue; }
 
             Vector3 _pos = builtBuildings[i].transform.position;
+
             Vector2 _size = builtBuildings[i].GetComponent<BuildingScript> ().building.size;
             bool collision = (pos.x + size.x > _pos.x) && (_pos.x + _size.x > pos.x) && (pos.y + size.y > _pos.y) && (_pos.y + _size.y > pos.y);
             if (collision) {
@@ -31,16 +32,35 @@ public class BuildingManager : MonoBehaviour {
     public void SetupScene () {
         // TODO : load save and summon + place all buildings
     }
-    public void AddBuilding (Building _building, int2 _pos) {
+    public void AddBuilding (Building _building) {
         for (int i = 0; i < buildings.Length; i++) {
             if (builtBuildings[i] != null) {continue;}
 
             GameObject _o = Instantiate (template);
             _o.GetComponent<BuildingScript> ().building = _building;
+
+            Vector2 _pos = Vector2.negativeInfinity;
+            // Get position
+            for (int j = 0; j < TERRAIN_WIDTH * 2; j++) {
+                for (int k = 0; k < TERRAIN_WIDTH * 2; k++) {
+                    Vector2 pPos = j * (2 * (j % 2) - 1) * Vector2.right + k * (2 * (k % 2) - 1) * Vector2.up;
+                    Debug.Log (pPos);
+                    if (CheckPosition (pPos.x * new Vector2 (-1, -1) + pPos.y * new Vector2 (1, -1), _building.size)) {
+                        _pos = pPos;
+                        break;
+                    }
+                }
+            }
+            if (_pos == Vector2.negativeInfinity) { return; }
+
             _o.transform.position = _pos.x * new Vector2 (-1, -1) + _pos.y * new Vector2 (1, -1);
-            _o.GetComponent<BuildingScript> ().pos = _pos.x * new Vector2 (-1, -1) + _pos.y * new Vector2 (1, -1);
+            _o.GetComponent<BuildingScript> ().pos = _pos;
+            _o.GetComponent<BuildingScript> ().level = 1;
             _o.GetComponent<BuildingScript> ().Init ();
+            _o.transform.localScale = Vector3.one * 8;
             builtBuildings[i] = _o;
+
+            GameManager.I.iM.CenterCameraOn (_o.transform.position);
 
             break;
         }

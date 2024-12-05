@@ -369,6 +369,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4787757483277804325, guid: c905eaccfb1544a41a35acdcfb54286e, type: 3}
+      propertyPath: cameraSpeed
+      value: 2048
+      objectReference: {fileID: 0}
     - target: {fileID: 470522403091251102, guid: c905eaccfb1544a41a35acdcfb54286e, type: 3}
       propertyPath: selectIndicator
       value: 
@@ -828,11 +832,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: -16
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 16
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

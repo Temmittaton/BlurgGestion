@@ -65,6 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   template: {fileID: 8903530955321005838, guid: 52981dd7f85239246a86c584dbb1cfc5, type: 3}
+  selectIndicator: {fileID: 0}
   builtBuildings: []
   buildings:
   - name: House
@@ -107,6 +108,7 @@ MonoBehaviour:
     type: 3
     ressource: 0
     stat: 1
+  ghostBuilding: {fileID: 0}
 --- !u!114 &7410354997353579905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   selectedBuilding: -1
-  cameraSpeed: 1
+  cameraSpeed: 1042
   camT: 0
 --- !u!114 &8810257916154215572
 MonoBehaviour:
@@ -163,7 +165,7 @@ MonoBehaviour:
   buildItems:
   - ID: 0
     costs: 00000000
-    ressources: 
+    ressources: 00000000
   - ID: 1
     costs: 
     ressources: 
